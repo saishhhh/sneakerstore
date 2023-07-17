@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="contactFormApp">
+
+<head>
+    <title>Contact Form</title>
+    <style>
+        body {
+            background-image: url('img/1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(177, 177, 177, 0.5);
+            border-radius: 5px;
+            margin-top: 100px;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+.btn-submit {
+    background-color: orangered;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    align-items: center;
+}
+
+.btn-submit:hover {
+    background-color: orange;
+}
+
+    </style>
+</head>
+
+<body>
+    <div ng-controller="ContactFormController as vm" class="container">
+        <form name="contactForm" ng-submit="vm.submitForm(contactForm.$valid)" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" ng-model="vm.formData.name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone No.:</label>
+                <input type="text" id="phone" name="phone" ng-model="vm.formData.phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="vm.formData.email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" ng-model="vm.formData.message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" ng-disabled="contactForm.$invalid">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
